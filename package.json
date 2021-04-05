@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
+    "deploy": "ng build recruitment-task --prod --base-href https://Wojciechr7.github.io/recruitment-task/ && angular-cli-ghpages --branch gh-pages",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "nx": "nx",
     "start": "ng serve --port=4201",
@@ -66,6 +67,7 @@
     "@nrwl/workspace": "11.6.1",
     "@types/jest": "26.0.8",
     "@types/node": "14.14.33",
+    "angular-cli-ghpages": "^1.0.0-rc.1",
     "codelyzer": "^6.0.0",
     "cypress": "^6.0.1",
     "dotenv": "8.2.0",
