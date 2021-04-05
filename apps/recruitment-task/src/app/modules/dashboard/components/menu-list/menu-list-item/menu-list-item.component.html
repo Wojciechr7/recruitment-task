@@ -1,4 +1,13 @@
-<recruitment-task-list-item class='list-item'>
-  <p>menu-list-item works!</p>
+<recruitment-task-list-item class='list-item' (addItem)='addToCart(dish)' [disabled]='!dish.available'>
+  <a color='primary' mat-fab class='image'
+     [style.backgroundImage]="'url(assets/images/' + getImgName(dish) + ')'"
+     [disabled]='!dish.available'>
+  </a>
+
+  <div fxLayout='column'>
+    <b>{{dish.name}}</b>
+    <span class='item-desc'>{{dish.description}}</span>
+  </div>
+
 </recruitment-task-list-item>
 

@@ -1,3 +1,26 @@
-<div class='card-list-wrapper'>
-  <button mat-button><mat-icon>shopping_cart</mat-icon>Card</button>
+<div fxFlex='auto' fxLayout='column' class='card-list-wrapper'>
+  <div class='menu-button-container'>
+    <button mat-raised-button>
+      <mat-icon>shopping_cart</mat-icon>
+      Cart
+    </button>
+  </div>
+
+  <div class='dishes-container' fxLayout='column' *ngIf='cart$ | async as cart'>
+    <ng-container *ngIf='cart.length; else emptyCart'>
+      <div *ngFor='let dish of cart' fxFlex='auto' fxLayoutAlign='space-between center'>
+        <b>{{dish.name}}</b>
+
+        <mat-icon class='remove-dish-button' (click)='removeDishFromCart(dish)'>close</mat-icon>
+      </div>
+    </ng-container>
+  </div>
+
+  <ng-template #emptyCart>
+    <div fxFlex='auto' fxLayoutAlign='center center'>
+      <button mat-raised-button disabled>Empty!</button>
+    </div>
+  </ng-template>
 </div>
+
+

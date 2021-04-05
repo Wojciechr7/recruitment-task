@@ -15,6 +15,7 @@ export class AppFacade {
   loaded$ = this.store.pipe(select(AppSelectors.getAppLoaded));
   allApp$ = this.store.pipe(select(AppSelectors.getAllApp));
   selectedApp$ = this.store.pipe(select(AppSelectors.getSelected));
+  loggedInUser$ = this.store.pipe(select(AppSelectors.getLoggedInUser));
 
   constructor(private store: Store) {
   }
@@ -30,4 +31,9 @@ export class AppFacade {
   login(login: string, password: string) {
     this.store.dispatch(AppActions.login({ login, password }));
   }
+
+  logout() {
+    this.store.dispatch(AppActions.logout());
+  }
+
 }

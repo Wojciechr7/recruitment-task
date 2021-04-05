@@ -1,0 +1,14 @@
+@import "apps/recruitment-task/src/styles";
+
+.list-item-wrapper {
+  padding: 5px 15px;
+
+  &.disabled {
+    background: $medium-gray;
+    pointer-events: none;
+  }
+
+  .add-icon {
+    cursor: pointer;
+  }
+}

@@ -1,3 +1,16 @@
+@import "apps/recruitment-task/src/styles";
+
 .list-item {
   margin-top: 5px;
+
+  a.image {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .item-desc {
+    color: $deep-gray;
+  }
 }

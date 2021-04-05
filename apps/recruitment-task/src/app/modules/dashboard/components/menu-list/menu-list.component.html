@@ -1,10 +1,9 @@
 <div class='menu-list-wrapper' fxLayout='column'>
-  <button mat-button><mat-icon>menu</mat-icon>Menu</button>
+  <div class='menu-button-container'>
+    <button mat-raised-button><mat-icon>menu</mat-icon>Menu</button>
+  </div>
 
   <div class='menu-list'>
-    <recruitment-task-menu-list-item></recruitment-task-menu-list-item>
-    <recruitment-task-menu-list-item></recruitment-task-menu-list-item>
-    <recruitment-task-menu-list-item></recruitment-task-menu-list-item>
-    <recruitment-task-menu-list-item></recruitment-task-menu-list-item>
+    <recruitment-task-menu-list-item *ngFor='let dish of dishes' [dish]='dish'></recruitment-task-menu-list-item>
   </div>
 </div>

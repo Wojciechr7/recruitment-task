@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'recruitment-task-list-item',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-item.component.scss']
 })
 export class ListItemComponent implements OnInit {
+
+  @Input() disabled: boolean;
+  @Output() addItem: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 

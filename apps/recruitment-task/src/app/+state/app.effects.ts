@@ -60,6 +60,17 @@ export class AppEffects {
     )
   );
 
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AppActions.logout),
+      fetch({
+        run: (action) => {
+          this.router.navigate(['/login']);
+        },
+      })
+    )
+  );
+
   constructor(
     private actions$: Actions,
     private appService: AppService,

@@ -25,12 +25,14 @@ export class DynamicFormComponent implements OnInit {
   }
 
   formSubmitted(form: NgForm) {
-    this.submitted.emit(form.value);
+    if (form.valid) {
+      this.submitted.emit(form.value);
+    }
   }
 
   private createFormGroup(group = {}): FormGroup {
     this.dynamicFormData.fields.forEach((field: FormFieldBaseModel) => {
-      group[field.name] = new FormControl('');
+      group[field.name] = new FormControl('', field.validators);
     });
 
     return new FormGroup(group);

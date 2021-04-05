@@ -1,3 +1,15 @@
 .card-list-wrapper {
-  border: 1px solid black;
+  border-top: 1px solid black;
+
+  .menu-button-container {
+    padding: 10px;
+  }
+
+  .dishes-container {
+    padding: 10px;
+
+    .remove-dish-button {
+      cursor: pointer;
+    }
+  }
 }

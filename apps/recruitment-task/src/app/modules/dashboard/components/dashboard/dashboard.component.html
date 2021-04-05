@@ -1,5 +1,5 @@
-<div fxFlex='auto' fxLayout='row wrap'>
-  <recruitment-task-menu-list fxFlex='70'></recruitment-task-menu-list>
+<div class='dashboard-container' fxFlex='auto' fxLayout='row wrap' fxLayout.lt-md="column">
+  <recruitment-task-menu-list fxFlex='70' [dishes]='dishes$ | async'></recruitment-task-menu-list>
 
-  <recruitment-task-card-list fxFlex='30'></recruitment-task-card-list>
+  <recruitment-task-card-list fxFlex='auto'></recruitment-task-card-list>
 </div>

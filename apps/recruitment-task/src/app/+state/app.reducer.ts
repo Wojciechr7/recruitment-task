@@ -34,6 +34,7 @@ const appReducer = createReducer(
   on(AppActions.loginSuccess, (state, { user }) =>
     appAdapter.addOne(user, { ...state, loggedInUser: user })
   ),
+  on(AppActions.logout, (state) => ({ ...state, loggedInUser: null })),
 );
 
 export function reducer(state: State | undefined, action: Action) {

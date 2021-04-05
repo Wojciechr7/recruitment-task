@@ -1,1 +1,5 @@
-<recruitment-task-dynamic-form [dynamicFormData]='form' (submitted)='submit($event)'></recruitment-task-dynamic-form>
+<recruitment-task-card class='login-form-wrapper' [settings]='cardSettings'>
+  <div class='login-form' fxLayoutAlign='center center'>
+    <recruitment-task-dynamic-form [dynamicFormData]='form' (submitted)='submit($event)'></recruitment-task-dynamic-form>
+  </div>
+</recruitment-task-card>

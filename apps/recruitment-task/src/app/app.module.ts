@@ -12,6 +12,7 @@ import { AppEffects } from './+state/app.effects';
 import { AppFacade } from './+state/app.facade';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from './helpers/auth.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,8 +21,12 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       //{ path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: '', loadChildren: () => import('./modules/main-container/main-container.module').then(m => m.MainContainerModule)},
-      { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
+      {
+        path: '',
+        loadChildren: () => import('./modules/main-container/main-container.module').then(m => m.MainContainerModule),
+        canActivate: [AuthGuard]
+      },
+      { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) }
     ]),
     StoreModule.forRoot(
       { router: routerReducer, app: fromApp.reducer },

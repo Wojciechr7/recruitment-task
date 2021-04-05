@@ -27,3 +27,5 @@ export const loginFailure = createAction(
   '[Login Page] Login Failure',
   props<{ error: any }>()
 );
+
+export const logout = createAction('[Login Page] Logout');

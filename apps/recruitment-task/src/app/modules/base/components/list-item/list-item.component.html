@@ -1,9 +1,9 @@
-<div fxFlex='auto' fxLayout='row' fxLayoutAlign='space-between center'>
+<div class='list-item-wrapper' fxFlex='auto' fxLayout='row' fxLayoutAlign='space-between center' [ngClass]="{'disabled' : disabled}">
   <div fxLayout='row' fxLayoutAlign='center center' fxLayoutGap='10px'>
-    <button mat-fab></button>
+<!--    <button mat-fab [disabled]='disabled'></button>-->
 
     <ng-content></ng-content>
   </div>
 
-  <mat-icon>add_circle</mat-icon>
+  <mat-icon class='add-icon' (click)='addItem.emit()'>add_circle</mat-icon>
 </div>

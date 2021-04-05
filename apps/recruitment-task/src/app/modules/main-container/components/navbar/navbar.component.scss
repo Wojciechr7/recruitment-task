@@ -1,9 +1,22 @@
+@import "apps/recruitment-task/src/styles";
+
 .navbar-container {
   .navbar-head {
-    background: gray;
+    background: $light-gray;
+    padding: 5px 10px;
+
+    .app-title {
+      margin: 0;
+    }
+
+    .actions {
+      mat-icon {
+        transform: scale(.8);
+      }
+    }
   }
 
   .navbar-buttons {
-
+    padding-left: 10px;
   }
 }

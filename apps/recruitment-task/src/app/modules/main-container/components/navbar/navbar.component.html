@@ -1,15 +1,17 @@
-<recruitment-task-card class='navbar-container' [settings]='cardSettings'>
+<div class='navbar-container' fxFlex='auto' fxLayout='column'>
   <nav class='navbar-head' fxFlex='auto' fxLayout='row' fxLayoutAlign="space-between">
-    <h2>TODO</h2>
+    <h3 class='app-title'>Burgers</h3>
 
-    <div class='actions' fxLayout='row'>
+    <div class='actions' fxLayout='row' fxLayoutAlign="start center">
+      <mat-icon>minimize</mat-icon>
+      <mat-icon>crop_square</mat-icon>
       <mat-icon>close</mat-icon>
     </div>
   </nav>
 
-  <div class='navbar-buttons' fxLayout='row' fxLayoutAlign="space-between">
+  <div class='navbar-buttons' fxLayout='row' fxLayoutAlign="space-between center">
     <mat-icon>menu</mat-icon>
-    <button mat-button color='warn'>Logout</button>
+    <button mat-button color='warn' (click)='logout()'>Logout</button>
   </div>
-</recruitment-task-card>
+</div>
 
