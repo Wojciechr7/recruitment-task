@@ -1,1 +1,3 @@
-<p>card works!</p>
+<mat-card *ngIf='settings' fxFlex='auto' [fxLayout]='settings.layout'>
+  <ng-content></ng-content>
+</mat-card>

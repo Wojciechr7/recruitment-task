@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CardSettingsModel } from '../../models/card-settings.model';
 
 @Component({
   selector: 'recruitment-task-card',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
+
+  @Input() settings: CardSettingsModel;
 
   constructor() { }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CardSettingsModel } from '../../../base/models/card-settings.model';
 
 @Component({
   selector: 'recruitment-task-navbar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  cardSettings: CardSettingsModel;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.cardSettings = new CardSettingsModel('column');
   }
 
 }

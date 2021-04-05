@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainContainerRoutingModule } from './main-container-routing.module';
 import { MainContainerComponent } from './components/main-container/main-container.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { BaseModule } from '../base/base.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    MainContainerRoutingModule
+    MainContainerRoutingModule,
+    BaseModule
   ]
 })
 export class MainContainerModule { }

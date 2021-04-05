@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+<recruitment-task-card class='navbar-container' [settings]='cardSettings'>
+  <nav class='navbar-head' fxFlex='auto' fxLayout='row' fxLayoutAlign="space-between">
+    <h2>TODO</h2>
+
+    <div class='actions' fxLayout='row'>
+      <mat-icon>close</mat-icon>
+    </div>
+  </nav>
+
+  <div class='navbar-buttons' fxLayout='row' fxLayoutAlign="space-between">
+    <mat-icon>menu</mat-icon>
+    <button mat-button color='warn'>Logout</button>
+  </div>
+</recruitment-task-card>
+

@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     RouterModule.forRoot([
       //{ path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', loadChildren: () => import('./modules/main-container/main-container.module').then(m => m.MainContainerModule)},
       { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
     ]),
     StoreModule.forRoot(
