@@ -1,13 +1,26 @@
-import { getGreeting } from '../support/app.po';
-
 describe('recruitment-task', () => {
-  beforeEach(() => cy.visit('/'));
+  it("should visit login page", () => {
+    cy.visit("/login");
+  });
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
+  it("should login", () => {
+    cy.get('#mat-input-0').type('admin');
+    cy.get('#mat-input-1').type('admin');
 
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to recruitment-task!');
+    cy.get('.mat-button').click();
+    cy.url().should('include', '/dashboard');
+  });
+
+  it("should move dish to cart", () => {
+    cy.get('.remove-dish-button').should('have.length', 0);
+    cy.get('.add-icon').first().click();
+    cy.get('.remove-dish-button').should('have.length', 1);
+    cy.get('.list-item-wrapper').first().should('have.class', 'disabled');
+  });
+
+  it("should remove dish from cart", () => {
+    cy.get('.remove-dish-button').first().click();
+    cy.get('.remove-dish-button').should('have.length', 0);
+    cy.get('.list-item-wrapper').first().should('not.have.class', 'disabled');
   });
 });
