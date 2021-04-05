@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './components/login/login.component';
-
+import { BaseModule } from '../base/base.module';
+import { DynamicFormModule } from '../dynamic-form/dynamic-form.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     CommonModule,
-    LoginRoutingModule
+    LoginRoutingModule,
+    BaseModule,
+    DynamicFormModule
   ]
 })
 export class LoginModule { }

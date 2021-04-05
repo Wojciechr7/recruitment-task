@@ -16,7 +16,8 @@ export class AppFacade {
   allApp$ = this.store.pipe(select(AppSelectors.getAllApp));
   selectedApp$ = this.store.pipe(select(AppSelectors.getSelected));
 
-  constructor(private store: Store) {}
+  constructor(private store: Store) {
+  }
 
   /**
    * Use the initialization action to perform one
@@ -24,5 +25,9 @@ export class AppFacade {
    */
   init() {
     this.store.dispatch(AppActions.init());
+  }
+
+  login(login: string, password: string) {
+    this.store.dispatch(AppActions.login({ login, password }));
   }
 }

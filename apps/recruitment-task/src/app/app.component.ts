@@ -9,7 +9,8 @@ import { AppFacade } from './+state/app.facade';
 export class AppComponent {
   title = 'recruitment-task';
 
-  constructor(public appFacade: AppFacade) {
+  constructor(private appFacade: AppFacade) {
+    this.appFacade.init();
   }
 
 }

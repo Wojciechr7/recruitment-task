@@ -19,6 +19,8 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
+      //{ path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'login', loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule) },
     ]),
     StoreModule.forRoot(
       { router: routerReducer, app: fromApp.reducer },
@@ -26,7 +28,7 @@ import { RouterModule } from '@angular/router';
         metaReducers: !environment.production ? [] : [],
         runtimeChecks: {
           strictActionImmutability: true,
-          strictStateImmutability: true,
+          strictStateImmutability: true
         },
         initialState: {
           router: {
@@ -47,6 +49,7 @@ import { RouterModule } from '@angular/router';
     StoreRouterConnectingModule.forRoot()
   ],
   providers: [AppFacade],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

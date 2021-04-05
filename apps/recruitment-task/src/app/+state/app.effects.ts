@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
-import { createEffect, Actions, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
-
-import * as AppFeature from './app.reducer';
 import * as AppActions from './app.actions';
+import { AppService } from '../app.service';
+import { first, map, tap } from 'rxjs/operators';
+import { UserModel } from '../modules/login/models/user.model';
+import { select, Store } from '@ngrx/store';
+import * as AppSelectors from './app.selectors';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AppEffects {
@@ -12,8 +16,11 @@ export class AppEffects {
       ofType(AppActions.init),
       fetch({
         run: (action) => {
-          // Your custom service 'load' logic goes here. For now just return a success action...
-          return AppActions.loadAppSuccess({ app: [] });
+          return this.appService.getUsers().pipe(
+            map((users: UserModel[]) => {
+              return AppActions.loadAppSuccess({ app: users });
+            })
+          )
         },
 
         onError: (action, error) => {
@@ -24,5 +31,39 @@ export class AppEffects {
     )
   );
 
-  constructor(private actions$: Actions) {}
+  login$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AppActions.login),
+      fetch({
+        run: (action) => {
+          return this.store.pipe(
+            select(AppSelectors.getAllApp),
+            first(),
+            map((users: UserModel[]) => {
+              const foundUser: UserModel = users.find((user: UserModel) => user.login === action.login && user.password === action.password);
+              this.router.navigate(['/dashboard']);
+
+              if (foundUser) {
+                return AppActions.loginSuccess({ user: foundUser });
+              }
+
+              return AppActions.loginFailure(null);
+            })
+          )
+        },
+
+        onError: (action, error) => {
+          console.error('Error', error);
+          return AppActions.loginFailure({ error });
+        },
+      })
+    )
+  );
+
+  constructor(
+    private actions$: Actions,
+    private appService: AppService,
+    private store: Store,
+    private router: Router
+  ) {}
 }

@@ -1,0 +1,7 @@
+<form class='dynamic-form' fxFlex='auto' fxLayout='column'
+      (submit)='formSubmitted(dynamicForm)' #dynamicForm='ngForm' [formGroup]="dynamicFormGroup"
+      *ngIf='dynamicFormData?.fields?.length && dynamicFormGroup'>
+  <ng-container *ngFor='let field of dynamicFormData.fields;' recruitmentTaskDynamicForm [field]="field" [form]='dynamicFormGroup'>
+  </ng-container>
+  <button mat-button color='primary'>Submit</button>
+</form>

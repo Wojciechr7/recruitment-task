@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DynamicFormModel } from '../../../dynamic-form/models/dynamic-form.model';
+import { FieldTypeEnum } from '../../../dynamic-form/models/fields/form-field-base.model';
+import { TextFieldModel, TextFieldTypeEnum } from '../../../dynamic-form/models/fields/text-field.model';
+import { AppFacade } from '../../../../+state/app.facade';
 
 @Component({
   selector: 'recruitment-task-login',
@@ -7,9 +11,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  form: DynamicFormModel;
+
+  constructor(
+    private appFacade: AppFacade
+  ) { }
 
   ngOnInit(): void {
+    this.form = new DynamicFormModel({}, this.getFormFields())
+  }
+
+  submit({login, password}) {
+    this.appFacade.login(login, password);
+  }
+
+  private getFormFields(): TextFieldModel[] {
+    return [
+      {
+        name: 'login',
+        placeholder: 'Login',
+        type: FieldTypeEnum.Text,
+        textFieldType: TextFieldTypeEnum.Text
+      },
+      {
+        name: 'password',
+        placeholder: 'Password',
+        type: FieldTypeEnum.Text,
+        textFieldType: TextFieldTypeEnum.Text
+      },
+    ]
   }
 
 }
