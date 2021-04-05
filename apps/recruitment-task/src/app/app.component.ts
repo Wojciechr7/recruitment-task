@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppFacade } from './+state/app.facade';
 
 @Component({
   selector: 'recruitment-task-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recruitment-task';
+
+  constructor(public appFacade: AppFacade) {
+  }
+
 }
